@@ -2,9 +2,9 @@
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/carsqs?serverTimezone=UTC
+    url: jdbc:mysql://47.96.175.216:3306/mac?serverTimezone=UTC
     username: root
-    password: sqs18236255547
+    password: yuxinyue
     type: com.alibaba.druid.pool.DruidDataSource
 
   thymeleaf:
@@ -18,7 +18,7 @@ spring:
 
 # mybatis配置
 mybatis:
-  mapper-locations: classpath*:/com/mac/mapper/*.xml
+  mapper-locations: classpath*:/mapper/*.xml
 
 
 
