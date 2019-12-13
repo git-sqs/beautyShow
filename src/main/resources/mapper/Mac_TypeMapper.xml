@@ -5,5 +5,8 @@
     <result column="t_id" jdbcType="INTEGER" property="tId" />
     <result column="t_name" jdbcType="VARCHAR" property="tName" />
   </resultMap>
+    <select id="findTypeByGoodsId" resultMap="BaseResultMap">
+        select * from mac_type where t_id = #{tid}
+    </select>
 
 </mapper>

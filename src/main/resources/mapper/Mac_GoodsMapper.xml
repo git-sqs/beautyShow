@@ -12,6 +12,9 @@
     <result column="c_id" jdbcType="INTEGER" property="cId" />
     <result column="t_id" jdbcType="INTEGER" property="tId" />
   </resultMap>
+    <select id="findByGoodsId" resultMap="BaseResultMap">
+        select * from mac_goods where m_id = #{id}
+    </select>
 
 
 </mapper>

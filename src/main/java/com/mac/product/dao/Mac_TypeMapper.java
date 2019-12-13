@@ -1,5 +1,9 @@
 package com.mac.product.dao;
 
-public interface Mac_TypeMapper {
+import com.mac.product.entity.Mac_Type;
+import org.springframework.stereotype.Repository;
 
+@Repository
+public interface Mac_TypeMapper {
+    Mac_Type findTypeByGoodsId(Integer tid);
 }

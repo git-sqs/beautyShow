@@ -6,6 +6,7 @@
     <result column="c_name" jdbcType="VARCHAR" property="cName" />
   </resultMap>
 
-
-
+    <select id="findColorByGoodsId" resultMap="BaseResultMap">
+        select * from mac_color where c_id = #{id}
+    </select>
 </mapper>
