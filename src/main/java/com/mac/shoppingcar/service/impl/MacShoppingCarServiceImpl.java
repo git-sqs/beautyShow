@@ -5,7 +5,7 @@ import com.mac.product.dao.MacColorMapper;
 import com.mac.product.dao.MacGoodsMapper;
 import com.mac.product.dao.MacTypeMapper;
 import com.mac.product.entity.MacGoods;
-import com.mac.product.service.MacShoppingCarService;
+import com.mac.shoppingcar.service.MacShoppingCarService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

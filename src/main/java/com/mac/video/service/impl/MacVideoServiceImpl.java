@@ -1,6 +1,7 @@
 package com.mac.video.service.impl;
 
 import com.mac.common.vo.ResultVo;
+import com.mac.dto.GoodsVideoDto;
 import com.mac.video.dao.MacVideoMapper;
 import com.mac.video.entity.MacVideo;
 import com.mac.video.service.MacVideoService;
@@ -53,5 +54,16 @@ public class MacVideoServiceImpl implements MacVideoService {
         }
     }
 
+    @Override
+    public ResultVo queryGoodsVideoById(int vid) {
+        GoodsVideoDto videoDto = macVideoMapper.queryGoodsVideoById(vid);
 
+        System.out.println("我是service--------------"+videoDto);
+
+        if (null != videoDto) {
+            return ResultVo.Ok(videoDto);
+        } else {
+            return ResultVo.fail();
+        }
+    }
 }

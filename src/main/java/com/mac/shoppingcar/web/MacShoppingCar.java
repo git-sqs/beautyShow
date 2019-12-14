@@ -1,7 +1,7 @@
 package com.mac.shoppingcar.web;
 
 import com.mac.common.vo.ResultVo;
-import com.mac.product.service.MacShoppingCarService;
+import com.mac.shoppingcar.service.MacShoppingCarService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;

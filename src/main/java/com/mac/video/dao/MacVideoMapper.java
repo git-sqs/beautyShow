@@ -1,5 +1,6 @@
 package com.mac.video.dao;
 
+import com.mac.dto.GoodsVideoDto;
 import com.mac.video.entity.MacVideo;
 
 import java.util.List;
@@ -14,4 +15,5 @@ public interface MacVideoMapper {
     int insert(MacVideo macVideo);
     List<MacVideo> selectAll();
     MacVideo queryVideoById(int vid);
+    GoodsVideoDto queryGoodsVideoById(int vid);
 }

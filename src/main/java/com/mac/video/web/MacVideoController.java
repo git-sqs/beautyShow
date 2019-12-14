@@ -6,6 +6,7 @@ import com.mac.video.service.MacVideoService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -40,4 +41,9 @@ public class MacVideoController {
         return macVideoService.queryVideoById(vid);
     }
 
+    @ApiOperation(value = "根据视频id查询对应的商品",notes = "根据视频id查询对应的商品")
+    @GetMapping("/mac/video/queryGoodsVideoById.do")
+    public ResultVo queryGoodsVideoById(int vid) {
+        return macVideoService.queryGoodsVideoById(vid);
+    }
 }

@@ -15,4 +15,6 @@ public interface MacVideoService {
     ResultVo selectAll();
 
     ResultVo queryVideoById(int vid);
+
+    ResultVo queryGoodsVideoById(int vid);
 }
