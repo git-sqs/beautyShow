@@ -9,18 +9,41 @@
     <result column="v_img_url" property="vImgUrl" jdbcType="VARCHAR" />
   </resultMap>
 
+  <resultMap id="GoodsVideoDtoMap" type="com.mac.dto.GoodsVideoDto">
+    <id column="v_id" property="vId" jdbcType="INTEGER"/>
+    <result column="v_title" property="vTitle" jdbcType="VARCHAR" />
+    <result column="v_desc" property="vDesc" jdbcType="VARCHAR" />
+    <result column="v_url" property="vUrl" jdbcType="VARCHAR" />
+    <result column="v_img_url" property="vImgUrl" jdbcType="VARCHAR" />
+    <result column="m_id" property="mId" jdbcType="INTEGER" />
+    <result column="m_name" property="mName" jdbcType="VARCHAR" />
+    <result column="m_price" property="mPrice" jdbcType="INTEGER" />
+    <result column="m_img_url" property="mImgUrl" jdbcType="VARCHAR" />
+    <result column="t_name" property="tName" jdbcType="VARCHAR" />
+    <result column="c_name" property="cName" jdbcType="VARCHAR" />
+  </resultMap>
+
   <insert id="insert" parameterType="com.mac.video.entity.MacVideo" >
     insert into mac_video (v_title, v_desc,
       v_url, v_img_url)
     values (#{vTitle,jdbcType=VARCHAR}, #{vDesc,jdbcType=VARCHAR},
       #{vUrl,jdbcType=VARCHAR}, #{vImgUrl,jdbcType=VARCHAR})
   </insert>
+
   <select id="selectAll" resultMap="BaseResultMap">
     select v_id,v_title,v_desc,v_url,v_img_url from mac_video
   </select>
 
   <select id="queryVideoById" resultMap="BaseResultMap">
-    select v_id,v_title,v_desc,v_url,v_img_url from mac_video where id = #{vid}
+    select v_id,v_title,v_desc,v_url,v_img_url from mac_video where v_id = #{vid}
   </select>
 
+  <select id="queryGoodsVideoById" resultMap="GoodsVideoDtoMap">
+    select v.*,g.m_id,g.m_name,g.m_price,g.m_img_url,t.t_name,c.c_name
+    FROM mac_video AS v
+    LEFT JOIN mac_goods AS g ON v.v_id = g.v_id
+    LEFT JOIN mac_type AS t ON t.t_id = g.t_id
+    LEFT JOIN mac_color AS c ON c.c_id = g.c_id
+    where v.v_id = #{vid}
+  </select>
 </mapper>

@@ -1,7 +1,7 @@
 package com.mac.order.dao;
 
 import com.mac.order.entity.MacOrder;
-import com.mac.order.entity.MacOrderVo;
+import com.mac.order.entity.MacOrderDto;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -27,6 +27,6 @@ public interface MacOrderMapper {
      * 查询所有订单
      * @return 返回所有订单
      */
-    List<MacOrderVo> findAll();
+    List<MacOrderDto> findAll();
 
   }
