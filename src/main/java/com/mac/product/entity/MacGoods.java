@@ -16,7 +16,7 @@ public class MacGoods {
 
     private String mDesc;
 
-    private String mKind;
+    private int mkid;
 
     private Integer cId;
 

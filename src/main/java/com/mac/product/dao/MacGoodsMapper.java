@@ -1,11 +1,16 @@
 package com.mac.product.dao;
 
+import com.mac.dto.MacProductDto;
 import com.mac.product.entity.MacGoods;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 @Repository
 public interface MacGoodsMapper {
 
-   MacGoods findByGoodsId(Integer id);
+   MacProductDto findByGoodsId(Integer id);
 
+   //查询指定种类商品
+   List<MacProductDto> findByKind(int kid);
 }

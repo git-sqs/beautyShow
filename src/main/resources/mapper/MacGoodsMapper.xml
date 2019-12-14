@@ -8,18 +8,39 @@
     <result column="m_price" jdbcType="INTEGER" property="mPrice" />
     <result column="m_img_url" jdbcType="VARCHAR" property="mImgUrl" />
     <result column="m_desc" jdbcType="VARCHAR" property="mDesc" />
-    <result column="m_kind" jdbcType="VARCHAR" property="mKind" />
+    <result column="m_kid" jdbcType="VARCHAR" property="mkid" />
     <result column="c_id" jdbcType="INTEGER" property="cId" />
     <result column="t_id" jdbcType="INTEGER" property="tId" />
     <result column="f_id" jdbcType="INTEGER" property="fId" />
   </resultMap>
-    <select id="findByGoodsId" resultMap="BaseResultMap">
-        select * from mac_goods where m_id = #{id}
+
+  <resultMap id="GoodsByKIdMap" type="com.mac.dto.MacProductDto">
+    <result column="sc_id" jdbcType="INTEGER" property="scId"/>
+    <result column="m_name" jdbcType="VARCHAR" property="mName"/>
+    <result column="c_name" jdbcType="VARCHAR" property="cName"/>
+    <result column="t_name" jdbcType="VARCHAR" property="tName"/>
+    <result column="m_price" jdbcType="INTEGER" property="mPrice"/>
+    <result column="m_img_url" jdbcType="VARCHAR" property="mUrl"/>
+    <result column="amount" jdbcType="VARCHAR" property="amount"/>
+  </resultMap>
+
+  <!--  查询指定商品信息-->
+    <select id="findByGoodsId" resultMap="GoodsByKIdMap">
+    SELECT m.m_id,m.m_name,c.c_name,t.t_name,m.m_price,m.m_img_url
+        from mac_goods m
+        LEFT JOIN mac_color c ON m.c_id = c.c_id
+        LEFT JOIN mac_type t ON m.t_id = t.t_id
+				WHERE m.m_id = #{id}
     </select>
 
 <!--  点击不同标签显示不同种类商品-->
-  <select id="findByKind" resultMap="BaseResultMap">
-    select * from mac_goods where m_kind = #{kind};
-  </select>
+  <select id="findByKind" resultMap="GoodsByKIdMap">
+         SELECT m.m_name,c.c_name,t.t_name,m.m_price,m.m_img_url
+        from mac_goods m
+        LEFT JOIN mac_color c ON m.c_id = c.c_id
+        LEFT JOIN mac_type t ON m.t_id = t.t_id
+        LEFT JOIN total_sort ts ON ts.id = m.k_id
+				WHERE m.k_id = #{kid}
+    </select>
 
 </mapper>

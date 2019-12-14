@@ -11,9 +11,14 @@ import com.mac.product.entity.MacGoods;
  */
 public interface IMacGoodsService {
 
+    //后台添加商品
     ResultVo saveGoods(MacGoods macGoods);
 
     ResultVo queryGoods();
 
+    //查询指定类型商品
+    ResultVo queryByKind(int kid);
 
+    //查询指定商品信息
+    ResultVo findByGoodsId(int id);
 }
