@@ -21,4 +21,8 @@ public class MacOrderDto {
     private String mUrl;
 
     private Integer amount;
+
+    private String sName;
+
+    private String uName;
 }

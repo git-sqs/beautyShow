@@ -57,8 +57,18 @@ public class OrderServiceImpl implements OrderService {
      * @return 所有订单
      */
     @Override
-    public ResultVo findAll() {
+    public ResultVo findAllOrder(Integer uid) {
+        return ResultVo.Ok( macOrderMapper.findAllByUid(uid));
+    }
+
+    @Override
+    public ResultVo findAllOrder() {
         return ResultVo.Ok( macOrderMapper.findAll());
+    }
+
+    @Override
+    public ResultVo updateOrder(Integer oid,Integer sid) {
+        return ResultVo.Ok(macOrderMapper.updateOrder(oid,sid));
     }
 
 

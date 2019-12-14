@@ -26,7 +26,7 @@ public class OrderController {
      * @param record 订单的详细信息
      * @return 返回R
      */
-    @ApiOperation(value = "添加订单",notes = "添加订单")
+    @ApiOperation(value = "添加订单(前台)",notes = "添加订单")
     @PostMapping("mac/order/insertOrder.do")
     ResultVo insertOrder(MacOrder record){
        return orderService.insert(record);
@@ -37,7 +37,7 @@ public class OrderController {
      * @param oid 订单id
      * @return 返回R
      */
-    @ApiOperation(value = "删除订单",notes = "删除订单")
+    @ApiOperation(value = "删除订单(前台)",notes = "删除订单")
     @DeleteMapping("mac/order/delOrder.do")
     ResultVo delOrder(Integer oid){
         return orderService.delOrder(oid);
@@ -47,9 +47,26 @@ public class OrderController {
      * 查询所有订单
      * @return R
      */
-    @ApiOperation(value = "查看所有订单",notes = "查看所有订单")
+    @ApiOperation(value = "通过用户id查看所有订单(前台)",notes = "查看所有订单")
+    @GetMapping("mac/order/findAllOrderByUid.do")
+    ResultVo findAllOrderByUid(Integer uid){
+        return orderService.findAllOrder(uid);
+    }
+
+    /**
+     * 查询所有订单
+     * @return R
+     */
+    @ApiOperation(value = "查看所有订单(后台)",notes = "查看所有订单")
     @GetMapping("mac/order/findAllOrder.do")
     ResultVo findAllOrder(){
-        return orderService.findAll();
+        return orderService.findAllOrder();
+    }
+
+
+    @ApiOperation(value = "通过订单id修改订单的状态(后台)",notes = "修改订单")
+    @PostMapping("mac/order/updateOrder.do")
+    ResultVo updateOrder(Integer oid,Integer sid){
+        return orderService.updateOrder(oid,sid);
     }
 }

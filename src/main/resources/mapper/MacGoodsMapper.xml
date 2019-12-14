@@ -8,7 +8,7 @@
     <result column="m_price" jdbcType="INTEGER" property="mPrice" />
     <result column="m_img_url" jdbcType="VARCHAR" property="mImgUrl" />
     <result column="m_desc" jdbcType="VARCHAR" property="mDesc" />
-    <result column="m_kid" jdbcType="VARCHAR" property="mkid" />
+    <result column="m_kind" jdbcType="VARCHAR" property="mKind" />
     <result column="c_id" jdbcType="INTEGER" property="cId" />
     <result column="t_id" jdbcType="INTEGER" property="tId" />
     <result column="f_id" jdbcType="INTEGER" property="fId" />
@@ -41,6 +41,12 @@
         LEFT JOIN mac_type t ON m.t_id = t.t_id
         LEFT JOIN total_sort ts ON ts.id = m.k_id
 				WHERE m.k_id = #{kid}
+
+
+
+    <select id="findByGoodsId" resultMap="BaseResultMap">
+        select * from mac_goods where m_id = #{id}
     </select>
+
 
 </mapper>

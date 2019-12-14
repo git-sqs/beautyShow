@@ -1,7 +1,6 @@
 package com.mac.product.service.impl;
 
 import com.mac.common.vo.ResultVo;
-import com.mac.product.dao.MacGoodsMapper;
 import com.mac.product.entity.MacGoods;
 import com.mac.product.service.IMacGoodsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +17,10 @@ public class MacGoodsServiceImpl implements IMacGoodsService {
 
     @Autowired
     private MacGoodsMapper goodsMapper;
+    @Autowired
+    private MacGoodsMapper macGoodsMapper;
+
+
     @Override
     public ResultVo saveGoods(MacGoods macGoods) {
 
@@ -39,4 +42,6 @@ public class MacGoodsServiceImpl implements IMacGoodsService {
     public ResultVo findByGoodsId(int id) {
         return ResultVo.Ok(goodsMapper.findByGoodsId(id));
     }
+
+
 }

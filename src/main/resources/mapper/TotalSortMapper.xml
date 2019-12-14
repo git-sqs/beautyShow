@@ -3,10 +3,22 @@
 <mapper namespace="com.mac.product.dao.TotalSortMapper">
   <resultMap id="BaseResultMap" type="com.mac.product.entity.TotalSort">
     <result column="id" jdbcType="INTEGER" property="id" />
-    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="sname" jdbcType="VARCHAR" property="sortName" />
+    <result column="up_level" jdbcType="INTEGER" property="upLevel" />
+    <result column="grade" jdbcType="INTEGER" property="grade" />
   </resultMap>
   <insert id="insert" parameterType="com.mac.product.entity.TotalSort">
-    insert into total_sort (id, name)
-    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR})
+    insert into total_sort (sname, up_level,
+      grade)
+    values (#{sortName,jdbcType=VARCHAR}, #{upLevel,jdbcType=INTEGER},
+      #{grade,jdbcType=INTEGER})
   </insert>
+
+  <select id="queryAllSort" resultMap="BaseResultMap">
+    select id,sname,up_level,grade from total_sort
+  </select>
+
+  <select id="querySortByUp" resultMap="BaseResultMap">
+    select id,sname,up_level,grade from total_sort where up_level=#{sortId}
+  </select>
 </mapper>

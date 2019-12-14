@@ -27,7 +27,7 @@ public class MacShoppingCarController {
      * @param macShoppingCar 购物车的详细信息
      * @return 返回int类型的数据
      */
-    @ApiOperation(value = "将商品添加到购物车中",notes ="将商品添加到购物车中" )
+    @ApiOperation(value = "将商品添加到购物车中(前台)",notes ="将商品添加到购物车中" )
     @PostMapping("/mac/shoppingCar/insertShoppingCar.do")
     ResultVo insertShoppingCar(MacShoppingCar macShoppingCar){
         return macShoppingCarService.insertShoppingCar(macShoppingCar);
@@ -38,13 +38,13 @@ public class MacShoppingCarController {
      * @param scid 商品id
      * @return 返回int类型
      */
-    @ApiOperation(value = "将商品从购物车中删除",notes = "通过Id查询指定商品颜色")
+    @ApiOperation(value = "将商品从购物车中删除(前台)",notes = "通过Id查询指定商品颜色")
     @DeleteMapping("/mac/shoppingCar/delShoppingCarById.do")
     ResultVo delShoppingCarById(Integer scid){
         return macShoppingCarService.delShoppingCar(scid);
     }
 
-    @ApiOperation(value = "查询所有在购物车中的商品",notes = "查询所有在购物车中的商品")
+    @ApiOperation(value = "查询所有在购物车中的商品(前台)",notes = "查询所有在购物车中的商品")
     @GetMapping("/mac/shoppingCar/findAllShoppingCar.do")
     public ResultVo findAllShoppingCar(){
         return macShoppingCarService.findAllShoppingCar();
