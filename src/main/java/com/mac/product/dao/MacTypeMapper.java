@@ -5,5 +5,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface MacTypeMapper {
+
     MacType findTypeByGoodsId(Integer tid);
 }

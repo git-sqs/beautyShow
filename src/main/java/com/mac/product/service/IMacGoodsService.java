@@ -15,5 +15,4 @@ public interface IMacGoodsService {
 
     ResultVo queryGoods();
 
-
 }

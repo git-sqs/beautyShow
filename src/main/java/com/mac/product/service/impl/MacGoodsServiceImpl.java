@@ -1,8 +1,10 @@
 package com.mac.product.service.impl;
 
 import com.mac.common.vo.ResultVo;
+import com.mac.product.dao.MacGoodsMapper;
 import com.mac.product.entity.MacGoods;
 import com.mac.product.service.IMacGoodsService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -14,6 +16,9 @@ import org.springframework.stereotype.Service;
 @Service
 public class MacGoodsServiceImpl implements IMacGoodsService {
 
+    @Autowired
+    private MacGoodsMapper macGoodsMapper;
+
 
     @Override
     public ResultVo saveGoods(MacGoods macGoods) {
@@ -24,4 +29,6 @@ public class MacGoodsServiceImpl implements IMacGoodsService {
     public ResultVo queryGoods() {
         return null;
     }
+
+
 }
