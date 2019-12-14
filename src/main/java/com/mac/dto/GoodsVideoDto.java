@@ -1,7 +1,5 @@
 package com.mac.dto;
 
-import com.mac.product.entity.MacGoods;
-import com.mac.video.entity.MacVideo;
 import lombok.Data;
 
 /**

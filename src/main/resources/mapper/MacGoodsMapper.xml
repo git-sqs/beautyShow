@@ -11,6 +11,7 @@
     <result column="m_kind" jdbcType="VARCHAR" property="mKind" />
     <result column="c_id" jdbcType="INTEGER" property="cId" />
     <result column="t_id" jdbcType="INTEGER" property="tId" />
+    <result column="f_id" jdbcType="INTEGER" property="fId" />
   </resultMap>
     <select id="findByGoodsId" resultMap="BaseResultMap">
         select * from mac_goods where m_id = #{id}
