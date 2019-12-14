@@ -10,7 +10,7 @@
     <result column="u_id" jdbcType="INTEGER" property="uId" />
       <result column="amount" javaType="INTEGER" property="amount"/>
   </resultMap>
-    <resultMap id="MacOrderVoMap" type="com.mac.order.entity.MacOrderVo">
+    <resultMap id="MacOrderVoMap" type="com.mac.order.entity.MacOrderDto">
         <result column="o_id" jdbcType="INTEGER" property="oId" />
         <result column="m_name" jdbcType="INTEGER" property="mName" />
         <result column="c_name" jdbcType="INTEGER" property="cName" />

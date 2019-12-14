@@ -1,13 +1,13 @@
-package com.mac.shoppingcar.service.impl;
+package com.mac.shoppingCar.service.impl;
 
 import com.mac.common.vo.ResultVo;
-import com.mac.product.dao.MacColorMapper;
-import com.mac.product.dao.MacGoodsMapper;
-import com.mac.product.dao.MacTypeMapper;
-import com.mac.product.entity.MacGoods;
-import com.mac.shoppingcar.service.MacShoppingCarService;
+import com.mac.shoppingCar.dao.MacShoppingCarMapper;
+import com.mac.shoppingCar.entity.MacShoppingCar;
+import com.mac.shoppingCar.service.MacShoppingCarService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * @author weining
@@ -17,30 +17,30 @@ import org.springframework.stereotype.Service;
 public class MacShoppingCarServiceImpl implements MacShoppingCarService {
 
     @Autowired
-    private MacGoodsMapper macGoodsMapper;
-    @Autowired
-    private MacColorMapper macColorMapper;
-    @Autowired
-    private MacTypeMapper macTypeMapper;
+    private MacShoppingCarMapper macShoppingCarMapper;
 
     @Override
-    public ResultVo findByGoodsId(Integer id) {
-        return ResultVo.Ok(macGoodsMapper.findByGoodsId(id));
+    public ResultVo insertShoppingCar(MacShoppingCar record) {
+        if (macShoppingCarMapper.insertShoppingCar(record) > 0) {
+            return ResultVo.Ok("商品已经添加到购物车");
+        } else {
+            return ResultVo.fail("添加购物车失败");
+        }
     }
 
     @Override
-    public ResultVo findColorByGoodsId(Integer id) {
-        MacGoods goodsId = macGoodsMapper.findByGoodsId(id);
-        System.out.println(goodsId.getCId());
-        System.out.println(macColorMapper.findColorByGoodsId(goodsId.getCId()));
-        return ResultVo.Ok(macColorMapper.findColorByGoodsId(goodsId.getCId()));
+    public ResultVo delShoppingCar(Integer scid) {
+        if (macShoppingCarMapper.delShoppingCar(scid) > 0) {
+            return ResultVo.Ok("商品已经从购物车中移除");
+        }else {
+            return ResultVo.fail("删除购物车失败");
+        }
     }
 
     @Override
-    public ResultVo findTypeByGoodsId(Integer id) {
-        MacGoods goodsId = macGoodsMapper.findByGoodsId(id);
-        System.out.println(goodsId.getTId());
-        System.out.println(macTypeMapper.findTypeByGoodsId(goodsId.getTId()));
-        return ResultVo.Ok(macTypeMapper.findTypeByGoodsId(goodsId.getTId()));
+    public ResultVo findAllShoppingCar() {
+        List arr = macShoppingCarMapper.findAll();
+        System.out.println(arr.toString());
+        return ResultVo.Ok(macShoppingCarMapper.findAll());
     }
 }
