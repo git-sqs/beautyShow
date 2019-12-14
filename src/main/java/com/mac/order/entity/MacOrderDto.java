@@ -7,7 +7,7 @@ import lombok.Data;
  * @date 2019/12/14 10:42
  */
 @Data
-public class MacOrderVo {
+public class MacOrderDto {
     private Integer oId;
 
     private String mName;
@@ -17,6 +17,8 @@ public class MacOrderVo {
     private String tName;
 
     private Integer oPrice;
+
+    private String mUrl;
 
     private Integer amount;
 }

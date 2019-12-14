@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mac.shoppingCar.dao.MacShoppingCarMapper">
+    <resultMap id="BaseResultMap" type="com.mac.shoppingCar.entity.MacShoppingCar">
+        <result column="sc_id" jdbcType="INTEGER" property="scId"/>
+        <result column="m_id" jdbcType="INTEGER" property="mId"/>
+        <result column="amount" jdbcType="INTEGER" property="amount"/>
+        <result column="u_id" jdbcType="INTEGER" property="uId"/>
+    </resultMap>
+    <resultMap id="MacShoppingCarVoMap" type="com.mac.dto.MacProductDto">
+        <result column="sc_id" jdbcType="INTEGER" property="scId"/>
+        <result column="m_name" jdbcType="VARCHAR" property="mName"/>
+        <result column="c_name" jdbcType="VARCHAR" property="cName"/>
+        <result column="t_name" jdbcType="VARCHAR" property="tName"/>
+        <result column="m_price" javaType="INTEGER" property="mPrice"/>
+        <result column="m_img_url" javaType="VARCHAR" property="mUrl"/>
+        <result column="amount" jdbcType="VARCHAR" property="amount"/>
+    </resultMap>
+
+
+    <insert id="insertShoppingCar" parameterType="com.mac.shoppingCar.entity.MacShoppingCar">
+    insert into mac_shoppingcar ( m_id, amount,u_id)
+    values (#{mId,jdbcType=INTEGER}, #{amount,jdbcType=INTEGER}, #{uId,jdbcType=INTEGER})
+  </insert>
+
+    <delete id="delShoppingCar">
+        DELETE FROM mac_shoppingcar WHERE sc_id = #{scid}
+    </delete>
+
+    <select id="findAll" resultMap="MacShoppingCarVoMap">
+        SELECT sc.sc_id,m.m_name,c.c_name,t.t_name,m.m_price,m.m_img_url,sc.amount
+        from mac_shoppingcar sc
+        LEFT JOIN mac_goods m ON sc.m_id = m.m_id
+        LEFT JOIN mac_color c ON m.c_id = c.c_id
+        LEFT JOIN mac_type t ON m.t_id = t.t_id
+    </select>
+
+</mapper>
