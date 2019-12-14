@@ -12,8 +12,8 @@
         <result column="m_name" jdbcType="VARCHAR" property="mName"/>
         <result column="c_name" jdbcType="VARCHAR" property="cName"/>
         <result column="t_name" jdbcType="VARCHAR" property="tName"/>
-        <result column="m_price" javaType="INTEGER" property="mPrice"/>
-        <result column="m_img_url" javaType="VARCHAR" property="mUrl"/>
+        <result column="m_price" jdbcType="INTEGER" property="mPrice"/>
+        <result column="m_img_url" jdbcType="VARCHAR" property="mUrl"/>
         <result column="amount" jdbcType="VARCHAR" property="amount"/>
     </resultMap>
 

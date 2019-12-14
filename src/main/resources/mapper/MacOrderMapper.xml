@@ -16,7 +16,7 @@
         <result column="c_name" jdbcType="INTEGER" property="cName" />
         <result column="t_name" jdbcType="INTEGER" property="tName" />
         <result column="o_price" jdbcType="INTEGER" property="oPrice" />
-        <result column="amount" javaType="INTEGER" property="amount"/>
+        <result column="amount" jdbcType="INTEGER" property="amount"/>
     </resultMap>
 
     <!--新增订单-->
