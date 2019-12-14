@@ -1,41 +1,64 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mac.order.dao.MacOrderMapper">
-  <resultMap id="BaseResultMap" type="com.mac.order.entity.MacOrder">
-    <result column="o_id" jdbcType="INTEGER" property="oId" />
-    <result column="m_id" jdbcType="INTEGER" property="mId" />
-    <result column="c_id" jdbcType="INTEGER" property="cId" />
-    <result column="t_id" jdbcType="INTEGER" property="tId" />
-    <result column="o_price" jdbcType="INTEGER" property="oPrice" />
-    <result column="u_id" jdbcType="INTEGER" property="uId" />
-      <result column="amount" javaType="INTEGER" property="amount"/>
-  </resultMap>
-    <resultMap id="MacOrderVoMap" type="com.mac.order.entity.MacOrderDto">
-        <result column="o_id" jdbcType="INTEGER" property="oId" />
-        <result column="m_name" jdbcType="INTEGER" property="mName" />
-        <result column="c_name" jdbcType="INTEGER" property="cName" />
-        <result column="t_name" jdbcType="INTEGER" property="tName" />
-        <result column="o_price" jdbcType="INTEGER" property="oPrice" />
+    <resultMap id="BaseResultMap" type="com.mac.order.entity.MacOrder">
+        <result column="o_id" jdbcType="INTEGER" property="oId"/>
+        <result column="m_id" jdbcType="INTEGER" property="mId"/>
+        <result column="c_id" jdbcType="INTEGER" property="cId"/>
+        <result column="t_id" jdbcType="INTEGER" property="tId"/>
+        <result column="o_price" jdbcType="INTEGER" property="oPrice"/>
+        <result column="u_id" jdbcType="INTEGER" property="uId"/>
+        <result column="amount" javaType="INTEGER" property="amount"/>
+    </resultMap>
+    <resultMap id="MacOrderDtoMap" type="com.mac.order.entity.MacOrderDto">
+        <result column="o_id" jdbcType="INTEGER" property="oId"/>
+        <result column="m_name" jdbcType="VARCHAR" property="mName"/>
+        <result column="m_img_url" jdbcType="VARCHAR" property="mUrl"/>
+        <result column="c_name" jdbcType="VARCHAR" property="cName"/>
+        <result column="t_name" jdbcType="VARCHAR" property="tName"/>
+        <result column="o_price" jdbcType="INTEGER" property="oPrice"/>
         <result column="amount" jdbcType="INTEGER" property="amount"/>
+        <result column="s_name" jdbcType="VARCHAR" property="sName"/>
+        <result column="u_name" jdbcType="VARCHAR" property="uName"/>
     </resultMap>
 
     <!--新增订单-->
-     <insert id="insert" parameterType="com.mac.order.entity.MacOrder">
+    <insert id="insert" parameterType="com.mac.order.entity.MacOrder">
     insert into mac_order (m_id, c_id,
       t_id, o_price, u_id,amount)
     values (#{mId,jdbcType=INTEGER}, #{cId,jdbcType=INTEGER},
       #{tId,jdbcType=INTEGER}, #{oPrice,jdbcType=INTEGER}, #{uId,jdbcType=INTEGER}, #{amount,jdbcType=INTEGER})
      </insert>
+    <update id="updateOrder">
+        update mac_order set s_id = #{sid} where o_id = #{oid}
+    </update>
 
     <!--删除指定id的商品-->
     <delete id="delOrder">
         delete from mac_order where o_id = #{oid}
     </delete>
     <!--查询所有订单-->
-    <select id="findAll" resultMap="MacOrderVoMap">
-        SELECT o.o_id,m.m_name,c.c_name,t.t_name,o.o_price,o.amount
-        from mac_order o LEFT JOIN mac_goods m on o.m_id = m.m_id
-        LEFT JOIN mac_color c on m.c_id = c.c_id
-        LEFT JOIN mac_type t on m.t_id = t.t_id
+    <select id="findAllByUid" resultMap="MacOrderDtoMap">
+        SELECT o.o_id,m.m_name,m_img_url,c.c_name,t.t_name,o.o_price,o.amount,s.s_name,u_name
+            from mac_order o LEFT JOIN mac_goods m on o.m_id = m.m_id
+            LEFT JOIN mac_color c on m.c_id = c.c_id
+            LEFT JOIN mac_type t on m.t_id = t.t_id
+            LEFT JOIN mac_status s on o.s_id = s.s_id
+            LEFT JOIN mac_user u on o.u_id = u.u_id
+           WHERE o.u_id = #{uid}
+    </select>
+
+    <!--查询所有订单-->
+    <select id="findAll" resultMap="MacOrderDtoMap">
+         SELECT o.o_id,m.m_name,m_img_url,c.c_name,t.t_name,o.o_price,o.amount,s.s_name,u_name
+            from mac_order o LEFT JOIN mac_goods m on o.m_id = m.m_id
+            LEFT JOIN mac_color c on m.c_id = c.c_id
+            LEFT JOIN mac_type t on m.t_id = t.t_id
+            LEFT JOIN mac_status s on o.s_id = s.s_id
+            LEFT JOIN mac_user u on o.u_id = u.u_id
+    </select>
+
+    <select id="findOrderByGoodsName" resultType="com.mac.order.entity.MacOrderDto">
+
     </select>
 </mapper>

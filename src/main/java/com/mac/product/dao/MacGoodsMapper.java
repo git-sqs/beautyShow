@@ -9,4 +9,5 @@ public interface MacGoodsMapper {
 
     MacGoods findByGoodsId(Integer id);
 
+
 }

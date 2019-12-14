@@ -27,6 +27,24 @@ public interface MacOrderMapper {
      * 查询所有订单
      * @return 返回所有订单
      */
+    List<MacOrderDto> findAllByUid(Integer uid);
+
+    /**
+     * 查询所有订单
+     * @return 返回所有订单
+     */
     List<MacOrderDto> findAll();
 
+
+    /**
+     * 通过商品名字查订单
+     */
+    List<MacOrderDto> findOrderByGoodsName();
+
+    /**
+     * 通过订单id 修改订单状态
+     * @param sid 订单状态
+     * @return int
+     */
+    int updateOrder(Integer oid,Integer sid);
   }

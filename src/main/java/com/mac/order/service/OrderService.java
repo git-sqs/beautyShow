@@ -27,6 +27,13 @@ public interface OrderService {
      * 查询所有订单
      * @return R
      */
-    ResultVo findAll();
+    ResultVo findAllOrder(Integer uid);
 
+    /**
+     * 查询所有订单
+     * @return R
+     */
+    ResultVo findAllOrder();
+
+    ResultVo updateOrder(Integer oid,Integer sid);
 }

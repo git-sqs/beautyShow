@@ -18,4 +18,6 @@ public class MacOrder {
 
     private Integer amount;
 
+    private Integer sId;
+
 }
