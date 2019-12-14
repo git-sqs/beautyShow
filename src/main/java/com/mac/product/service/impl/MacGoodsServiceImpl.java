@@ -1,6 +1,8 @@
 package com.mac.product.service.impl;
 
 import com.mac.common.vo.ResultVo;
+import com.mac.dto.MacProductDto;
+import com.mac.product.dao.MacGoodsMapper;
 import com.mac.product.entity.MacGoods;
 import com.mac.product.service.IMacGoodsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,14 +19,18 @@ public class MacGoodsServiceImpl implements IMacGoodsService {
 
     @Autowired
     private MacGoodsMapper goodsMapper;
-    @Autowired
-    private MacGoodsMapper macGoodsMapper;
 
 
+
+    //后台添加商品
     @Override
-    public ResultVo saveGoods(MacGoods macGoods) {
+    public ResultVo addGoods(MacGoods macGoods) {
 
-        return null;
+        if (goodsMapper.addGoods(macGoods) > 0) {
+            return ResultVo.Ok();
+        } else {
+            return ResultVo.fail();
+        }
     }
 
     @Override
@@ -38,6 +44,7 @@ public class MacGoodsServiceImpl implements IMacGoodsService {
         return ResultVo.Ok(goodsMapper.findByKind(kid));
     }
 
+    //指定商品信息
     @Override
     public ResultVo findByGoodsId(int id) {
         return ResultVo.Ok(goodsMapper.findByGoodsId(id));

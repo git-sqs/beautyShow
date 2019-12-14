@@ -1,6 +1,7 @@
 package com.mac.product.service;
 
 import com.mac.common.vo.ResultVo;
+import com.mac.dto.MacProductDto;
 import com.mac.product.entity.MacGoods;
 
 /**
@@ -12,7 +13,7 @@ import com.mac.product.entity.MacGoods;
 public interface IMacGoodsService {
 
     //后台添加商品
-    ResultVo saveGoods(MacGoods macGoods);
+    ResultVo addGoods(MacGoods macGoods);
 
     ResultVo queryGoods();
 
