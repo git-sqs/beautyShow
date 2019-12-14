@@ -1,4 +1,4 @@
-package com.mac.product.web;
+package com.mac.shoppingcar.web;
 
 import com.mac.common.vo.ResultVo;
 import com.mac.product.service.MacShoppingCarService;
@@ -20,19 +20,19 @@ public class MacShoppingCar {
     private MacShoppingCarService macShoppingCarService;
 
     @ApiOperation(value = "通过Id查询商品数据",notes ="通过Id查询商品数据" )
-    @GetMapping("/mac/product/findByGoodsId.do")
+    @GetMapping("/mac/shoppingCar/findByGoodsId.do")
     public ResultVo findByGoodsId(Integer id){
         return macShoppingCarService.findByGoodsId(id);
     }
 
     @ApiOperation(value = "通过Id查询指定商品颜色",notes = "通过Id查询指定商品颜色")
-    @GetMapping("/mac/product/findColorByGoodsId.do")
+    @GetMapping("/mac/shoppingCar/findColorByGoodsId.do")
     public ResultVo findColorByGoodsId(Integer id){
         return macShoppingCarService.findColorByGoodsId(id);
     }
 
     @ApiOperation(value = "通过Id查询指定商品类型",notes = "通过Id查询指定商品类型")
-    @GetMapping("/mac/product/findTypeByGoodsId.do")
+    @GetMapping("/mac/shoppingCar/findTypeByGoodsId.do")
     public ResultVo findTypeByGoodsId(Integer id){
         return macShoppingCarService.findTypeByGoodsId(id);
     }
