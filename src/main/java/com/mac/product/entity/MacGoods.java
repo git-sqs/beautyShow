@@ -3,7 +3,7 @@ package com.mac.product.entity;
 import lombok.Data;
 
 @Data
-public class Mac_Goods {
+public class MacGoods {
     private Integer mId;
 
     private String mName;

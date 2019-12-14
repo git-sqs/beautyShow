@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.mac.product.dao.Mac_GoodsMapper">
-  <resultMap id="BaseResultMap" type="com.mac.product.entity.Mac_Goods">
+<mapper namespace="com.mac.product.dao.MacGoodsMapper">
+  <resultMap id="BaseResultMap" type="com.mac.product.entity.MacGoods">
     <result column="m_id" jdbcType="INTEGER" property="mId" />
     <result column="m_name" jdbcType="VARCHAR" property="mName" />
     <result column="m_weight" jdbcType="INTEGER" property="mWeight" />
