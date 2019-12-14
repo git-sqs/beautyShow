@@ -21,4 +21,6 @@ public class MacGoods {
     private Integer cId;
 
     private Integer tId;
+
+    private Integer fId;
 }
