@@ -1,7 +1,7 @@
 package com.mac.product.dao;
 
+import com.mac.dto.MacGoodsDto;
 import com.mac.product.entity.FireSort;
-import com.mac.product.entity.MacGoods;
 
 import java.util.List;
 
@@ -11,7 +11,7 @@ public interface FireSortMapper {
 
     List<FireSort> queryAllFireSort();
 
-    List<MacGoods> queryAllFireGoods();
+    List<MacGoodsDto> queryAllFireGoods();
 
     int delFireSaleSort(int id);
 

@@ -50,5 +50,10 @@ public class MacGoodsServiceImpl implements IMacGoodsService {
         return ResultVo.Ok(goodsMapper.findByGoodsId(id));
     }
 
+    @Override
+    public ResultVo findGoodsByKeyWord(String keyWord) {
+        return null;
+    }
+
 
 }

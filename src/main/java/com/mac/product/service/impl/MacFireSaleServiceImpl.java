@@ -5,6 +5,8 @@ import com.mac.product.dao.FireSortMapper;
 import com.mac.product.entity.FireSort;
 import com.mac.product.entity.MacGoods;
 import com.mac.product.service.IMacFireSaleService;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,11 +23,16 @@ import java.util.Map;
 @Service
 public class MacFireSaleServiceImpl implements IMacFireSaleService {
 
+    private static final Logger log4j2= LogManager.getLogger(MacFireSaleServiceImpl.class);
+
     @Autowired
     private FireSortMapper fireSortMapper;
 
     @Override
     public ResultVo queryAllFireGoods() {
+
+        log4j2.info(fireSortMapper.queryAllFireGoods());
+
         return ResultVo.Ok(fireSortMapper.queryAllFireGoods());
     }
 

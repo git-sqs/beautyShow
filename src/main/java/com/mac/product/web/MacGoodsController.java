@@ -42,5 +42,14 @@ public class MacGoodsController {
     }
 
 
+    @ApiOperation(value ="关键字搜索商品",notes = "关键字搜索商品")
+    @GetMapping("/api/mac/product/macgoods/findGoodsByKeyWord.do")
+    public ResultVo findGoodsByKeyWord(String keyWord) {
+        return macGoodsService.findGoodsByKeyWord(keyWord);
+    }
+
+
+
+
 
 }

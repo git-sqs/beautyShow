@@ -22,4 +22,6 @@ public interface IMacGoodsService {
 
     //查询指定商品信息
     ResultVo findByGoodsId(int id);
+
+    ResultVo findGoodsByKeyWord(String keyWord);
 }

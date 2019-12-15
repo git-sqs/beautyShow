@@ -1,42 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mac.product.dao.FireSortMapper">
-  <resultMap id="BaseResultMap" type="com.mac.product.entity.FireSort">
-    <result column="id" jdbcType="INTEGER" property="id" />
-    <result column="fire_name" jdbcType="VARCHAR" property="fireName" />
-    <result column="fire_describe" jdbcType="VARCHAR" property="fireDescribe" />
-  </resultMap>
-  <resultMap id="macGoodsMap" type="com.mac.product.entity.MacGoods">
-    <result column="m_id" jdbcType="INTEGER" property="mId" />
-    <result column="m_name" jdbcType="VARCHAR" property="mName" />
-    <result column="m_weight" jdbcType="INTEGER" property="mWeight" />
-    <result column="m_price" jdbcType="INTEGER" property="mPrice" />
-    <result column="m_img_url" jdbcType="VARCHAR" property="mImgUrl" />
-    <result column="m_desc" jdbcType="VARCHAR" property="mDesc" />
-    <result column="m_kind" jdbcType="VARCHAR" property="mKind" />
-    <result column="c_id" jdbcType="INTEGER" property="cId" />
-    <result column="t_id" jdbcType="INTEGER" property="tId" />
-    <result column="f_id" jdbcType="INTEGER" property="fId" />
-  </resultMap>
-  <insert id="insert" parameterType="com.mac.product.entity.FireSort">
+    <resultMap id="BaseResultMap" type="com.mac.product.entity.FireSort">
+        <result column="id" jdbcType="INTEGER" property="id"/>
+        <result column="fire_name" jdbcType="VARCHAR" property="fireName"/>
+        <result column="fire_describe" jdbcType="VARCHAR" property="fireDescribe"/>
+    </resultMap>
+    <resultMap id="macGoodsMap" type="com.mac.product.entity.MacGoods">
+        <result column="m_id" jdbcType="INTEGER" property="mId"/>
+        <result column="m_name" jdbcType="VARCHAR" property="mName"/>
+        <result column="m_weight" jdbcType="INTEGER" property="mWeight"/>
+        <result column="m_price" jdbcType="INTEGER" property="mPrice"/>
+        <result column="m_img_url" jdbcType="VARCHAR" property="mImgUrl"/>
+        <result column="m_desc" jdbcType="VARCHAR" property="mDesc"/>
+        <result column="m_kind" jdbcType="VARCHAR" property="mKind"/>
+        <result column="c_id" jdbcType="INTEGER" property="cId"/>
+        <result column="t_id" jdbcType="INTEGER" property="tId"/>
+        <result column="f_id" jdbcType="INTEGER" property="fId"/>
+    </resultMap>
+    <resultMap id="MacGoodsDtoMap" type="com.mac.dto.MacGoodsDto">
+        <result column="m_id" jdbcType="INTEGER" property="mId"/>
+        <result column="m_name" jdbcType="VARCHAR" property="mName"/>
+        <result column="c_name" jdbcType="VARCHAR" property="cName"/>
+        <result column="t_name" jdbcType="VARCHAR" property="tName"/>
+        <result column="m_price" jdbcType="INTEGER" property="mPrice"/>
+        <result column="m_img_url" jdbcType="VARCHAR" property="mUrl"/>
+        <result column="f_id" jdbcType="VARCHAR" property="fId"/>
+        <result column="fire_name" jdbcType="VARCHAR" property="fireName"/>
+    </resultMap>
+
+    <insert id="insert" parameterType="com.mac.product.entity.FireSort">
     insert into fire_sort (fire_name, fire_describe
       )
     values (#{fireName,jdbcType=VARCHAR}, #{fireDescribe,jdbcType=VARCHAR}
       )
   </insert>
-  <select id="queryAllFireSort" resultMap="BaseResultMap">
+    <select id="queryAllFireSort" resultMap="BaseResultMap">
     select id,fire_name,fire_describe from fire_sort
   </select>
-  <select id="queryAllFireGoods" resultMap="macGoodsMap">
-    select * from mac_goods where f_id != 0 order by f_id
+    <select id="queryAllFireGoods" resultMap="MacGoodsDtoMap">
+    SELECT m.m_id,m.m_name,c.c_name,t.t_name,m.m_price,m.m_img_url,m.f_id,s.fire_name
+        from mac_goods m LEFT JOIN mac_color c ON m.c_id = c.c_id
+        LEFT JOIN mac_type t ON m.t_id = t.t_id
+        left join fire_sort s on m.f_id=s.id where m.f_id != 0
   </select>
-  <delete id="delFireSaleSort">
+    <delete id="delFireSaleSort">
     delete from fire_sort where id=#{id}
   </delete>
-  <update id="goodBecomeFire">
+    <update id="goodBecomeFire">
     update mac_goods set f_id=#{sortId} where m_id=#{goodId}
   </update>
-  <update id="fireBecomeGood">
+    <update id="fireBecomeGood">
     update mac_goods set f_id=0 where m_id=#{goodId}
   </update>
 </mapper>
