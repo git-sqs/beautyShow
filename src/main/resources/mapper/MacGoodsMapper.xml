@@ -64,9 +64,15 @@
 
     <!--  关键字搜索商品-->
     <select id="findGoodsByKeyWord" resultMap="MacGoodsDtoMap">
+        <bind name="myKeyName" value="'%'+keyName+'%'" />
          SELECT m.m_id,m.m_name,c.c_name,t.t_name,m.m_price,m.m_img_url
         from mac_goods m LEFT JOIN mac_color c ON m.c_id = c.c_id
-        LEFT JOIN mac_type t ON m.t_id = t.t_id WHERE m.m_name like #{keyWord} or m.m_desc like #{keyWord}
+        LEFT JOIN mac_type t ON m.t_id = t.t_id
+        <where>
+            <if test="keyName != null and keyName != ''">
+                m.m_name like #{myKeyName} or m.m_desc like #{myKeyName}
+            </if>
+        </where>
 
 </select>
 

@@ -52,9 +52,6 @@ public class MacGoodsServiceImpl implements IMacGoodsService {
 
     @Override
     public ResultVo findGoodsByKeyWord(String keyWord) {
-        if(keyWord !=null) {
-            keyWord = "%"+keyWord+"%";
-        }
         return ResultVo.Ok(goodsMapper.findGoodsByKeyWord(keyWord));
     }
 
