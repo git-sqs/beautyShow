@@ -29,13 +29,14 @@
     </resultMap>
 
     <resultMap id="MacGoodsDtoMap" type="com.mac.dto.MacGoodsDto">
-        <result column="m_id" jdbcType="INTEGER" property="mId"/>
+        <id column="m_id" property="mId" jdbcType="INTEGER" />
+       <!-- <result column="m_id" jdbcType="INTEGER" property="mId"/>-->
         <result column="m_name" jdbcType="VARCHAR" property="mName"/>
         <result column="c_name" jdbcType="VARCHAR" property="cName"/>
         <result column="t_name" jdbcType="VARCHAR" property="tName"/>
         <result column="m_price" jdbcType="INTEGER" property="mPrice"/>
         <result column="m_img_url" jdbcType="VARCHAR" property="mUrl"/>
-        <result column="f_id" jdbcType="VARCHAR" property="fId"/>
+        <result column="f_id" jdbcType="INTEGER" property="fId"/>
         <result column="fire_name" jdbcType="VARCHAR" property="fireName"/>
     </resultMap>
 
