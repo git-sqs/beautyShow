@@ -36,4 +36,6 @@ public interface OrderService {
     ResultVo findAllOrder();
 
     ResultVo updateOrder(Integer oid,Integer sid);
+
+    ResultVo findOrderByGoodName(String goodName);
 }

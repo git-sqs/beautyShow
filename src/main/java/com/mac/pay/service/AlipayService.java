@@ -12,12 +12,6 @@ import java.io.UnsupportedEncodingException;
  * @date 2019/12/14 19:22
  */
 public interface AlipayService {
-    ResultVo close(HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException, AlipayApiException;
-
-    ResultVo refund(HttpServletRequest request, HttpServletResponse response) throws AlipayApiException, UnsupportedEncodingException;
-
-    ResultVo query(HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException, AlipayApiException;
-
     ResultVo pay(HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException, AlipayApiException;
 
     ResultVo fastPay(HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException, AlipayApiException;
@@ -25,4 +19,10 @@ public interface AlipayService {
     ResultVo notify(HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException, AlipayApiException;
 
     ResultVo returnurl(HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException, AlipayApiException;
+
+    ResultVo close(String widtCout_trade_no, String widtCtrade_no)throws UnsupportedEncodingException, AlipayApiException;
+
+    ResultVo refund(String widtRout_trade_no, String widtRtrade_no, String widtRrefund_amount, String widtRrefund_reason, String widtRout_request_no) throws AlipayApiException, UnsupportedEncodingException;
+
+    ResultVo query(String widtQout_trade_no, String widtQtrade_no) throws AlipayApiException, UnsupportedEncodingException;
 }

@@ -33,6 +33,7 @@
         LEFT JOIN mac_goods m ON sc.m_id = m.m_id
         LEFT JOIN mac_color c ON m.c_id = c.c_id
         LEFT JOIN mac_type t ON m.t_id = t.t_id
+        WHERE sc.u_id = #{uid}
     </select>
 
 </mapper>

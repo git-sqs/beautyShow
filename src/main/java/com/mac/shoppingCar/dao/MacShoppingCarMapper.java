@@ -31,5 +31,5 @@ public interface MacShoppingCarMapper {
      * 查询所有购物车的东西
      * @return 返回所有购物车的商品
      */
-    List<MacProductDto> findAll();
+    List<MacProductDto> findAll(Integer uid);
 }
