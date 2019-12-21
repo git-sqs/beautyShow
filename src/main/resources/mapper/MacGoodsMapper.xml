@@ -8,10 +8,11 @@
         <result column="m_price" jdbcType="INTEGER" property="mPrice"/>
         <result column="m_img_url" jdbcType="VARCHAR" property="mImgUrl"/>
         <result column="m_desc" jdbcType="VARCHAR" property="mDesc"/>
-        <result column="m_kind" jdbcType="VARCHAR" property="mkid"/>
         <result column="c_id" jdbcType="INTEGER" property="cId"/>
         <result column="t_id" jdbcType="INTEGER" property="tId"/>
         <result column="f_id" jdbcType="INTEGER" property="fId"/>
+        <result column="v_id" jdbcType="INTEGER" property="vId"/>
+        <result column="k_id" jdbcType="INTEGER" property="kId"/>
     </resultMap>
 
     <resultMap id="MacAllInformationMap" type="com.mac.dto.MacAllInformationDto">
@@ -30,7 +31,6 @@
 
     <resultMap id="MacGoodsDtoMap" type="com.mac.dto.MacGoodsDto">
         <id column="m_id" property="mId" jdbcType="INTEGER" />
-       <!-- <result column="m_id" jdbcType="INTEGER" property="mId"/>-->
         <result column="m_name" jdbcType="VARCHAR" property="mName"/>
         <result column="c_name" jdbcType="VARCHAR" property="cName"/>
         <result column="t_name" jdbcType="VARCHAR" property="tName"/>
@@ -41,10 +41,10 @@
     </resultMap>
 
     <insert id="addGoods">
-    insert into mac_goods (m_name,m_weight,m_price,m_img_url,m_desc,m_kind,c_id,t_id,f_id)
+    insert into mac_goods (m_name,m_weight,m_price,m_img_url,m_desc,c_id,t_id,f_id,v_id,k_id)
     values (#{mName,jdbcType=VARCHAR}, #{mWeight,jdbcType=INTEGER},
-      #{mPrice,jdbcType=INTEGER}, #{mImgUrl,jdbcType=VARCHAR}, #{mDesc,jdbcType=VARCHAR}, #{mkid,jdbcType=VARCHAR},
-      #{cId,jdbcType=INTEGER}, #{tId,jdbcType=INTEGER}, #{fId,jdbcType=INTEGER})
+      #{mPrice,jdbcType=INTEGER}, #{mImgUrl,jdbcType=VARCHAR}, #{mDesc,jdbcType=VARCHAR},
+      #{cId,jdbcType=INTEGER}, #{tId,jdbcType=INTEGER}, #{fId,jdbcType=INTEGER},#{vId,jdbcType=INTEGER},#{kId,jdbcType=INTEGER})
      </insert>
     <!--  查询指定商品信息-->
     <select id="findByGoodsId" resultMap="MacAllInformationMap">
