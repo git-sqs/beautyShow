@@ -16,11 +16,13 @@ public class MacGoods {
 
     private String mDesc;
 
-    private int mkid;
-
     private Integer cId;
 
     private Integer tId;
 
     private Integer fId;
+
+    private Integer vId;
+
+    private Integer kId;
 }

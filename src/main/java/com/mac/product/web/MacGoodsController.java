@@ -1,14 +1,16 @@
 package com.mac.product.web;
 
 import com.mac.common.vo.ResultVo;
-import com.mac.dto.MacProductDto;
 import com.mac.product.entity.MacGoods;
 import com.mac.product.service.IMacGoodsService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  * @Author: sqs
@@ -16,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @Description:
  * @Version: 1.0
  */
+@CrossOrigin
 @Api(value = "全部产品",tags = "全部产品")
 @RestController
 public class MacGoodsController {
@@ -35,21 +38,19 @@ public class MacGoodsController {
         return macGoodsService.queryByKind(kid);
     }
 
-    @ApiOperation(value ="后台管理添加商品",notes = "查询指定标签商品")
-    @GetMapping("/api/mac/product/macgoods/addGoods.do")
-    public ResultVo addGoods(MacGoods macGoods) {
-        return macGoodsService.addGoods(macGoods);
-    }
-
 
     @ApiOperation(value ="关键字搜索商品",notes = "关键字搜索商品")
-    @GetMapping("/api/mac/product/macgoods/findGoodsByKeyWord.do")
+    @PostMapping("/api/mac/product/macgoods/findGoodsByKeyWord.do")
     public ResultVo findGoodsByKeyWord(String keyWord) {
         return macGoodsService.findGoodsByKeyWord(keyWord);
     }
 
 
-
+    @ApiOperation(value ="后台管理添加商品",notes = "查询指定标签商品")
+    @PostMapping("/api/mac/background/product/addGoods.do")
+    public ResultVo addGoods(MacGoods macGoods, MultipartFile multipartFile) {
+        return macGoodsService.addGoods(macGoods,multipartFile);
+    }
 
 
 }

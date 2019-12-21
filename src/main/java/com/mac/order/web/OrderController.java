@@ -69,4 +69,10 @@ public class OrderController {
     ResultVo updateOrder(Integer oid,Integer sid){
         return orderService.updateOrder(oid,sid);
     }
+
+    @ApiOperation(value = "通过商品名字查询所有订单(后台)",notes = "通过商品名字查询所有订单")
+    @PostMapping("mac/order/findOrderByGoodName.do")
+    ResultVo findOrderByGoodsName(String goodName){
+        return orderService.findOrderByGoodName(goodName);
+    }
 }

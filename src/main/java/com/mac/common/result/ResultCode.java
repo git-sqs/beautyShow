@@ -15,7 +15,7 @@ public enum ResultCode {
     /**
      * OK ：后面的数据相当于直接把值赋值为OK、
      */
-    OK(200),ERROR(400),NOTFOUNT(404);
+    OK(0),ERROR(400),NOTFOUNT(404);
 
     private int val;
 

@@ -71,5 +71,14 @@ public class OrderServiceImpl implements OrderService {
         return ResultVo.Ok(macOrderMapper.updateOrder(oid,sid));
     }
 
+    @Override
+    public ResultVo findOrderByGoodName(String goodName) {
+        if (goodName!=null) {
+            return ResultVo.Ok(macOrderMapper.findOrderByGoodsName(goodName));
+        }else {
+            return ResultVo.fail("请输入你想要查的订单名字");
+        }
+    }
+
 
 }

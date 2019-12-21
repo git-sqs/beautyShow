@@ -27,6 +27,6 @@ public interface MacShoppingCarService {
      * 查询所有购物车的东西
      * @return 返回所有购物车的商品
      */
-   ResultVo findAllShoppingCar();
+   ResultVo findAllShoppingCar(Integer uid);
 
 }

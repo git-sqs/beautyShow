@@ -46,7 +46,7 @@ public class MacShoppingCarController {
 
     @ApiOperation(value = "查询所有在购物车中的商品(前台)",notes = "查询所有在购物车中的商品")
     @GetMapping("/mac/shoppingCar/findAllShoppingCar.do")
-    public ResultVo findAllShoppingCar(){
-        return macShoppingCarService.findAllShoppingCar();
+    public ResultVo findAllShoppingCar(Integer uid){
+        return macShoppingCarService.findAllShoppingCar(uid);
     }
 }

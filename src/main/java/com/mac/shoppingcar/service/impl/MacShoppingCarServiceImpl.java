@@ -38,9 +38,7 @@ public class MacShoppingCarServiceImpl implements MacShoppingCarService {
     }
 
     @Override
-    public ResultVo findAllShoppingCar() {
-        List arr = macShoppingCarMapper.findAll();
-        System.out.println(arr.toString());
-        return ResultVo.Ok(macShoppingCarMapper.findAll());
+    public ResultVo findAllShoppingCar(Integer uid) {
+        return ResultVo.Ok(macShoppingCarMapper.findAll(uid));
     }
 }

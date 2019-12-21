@@ -39,7 +39,7 @@ public interface MacOrderMapper {
     /**
      * 通过商品名字查订单
      */
-    List<MacOrderDto> findOrderByGoodsName();
+    List<MacOrderDto> findOrderByGoodsName(String goodName);
 
     /**
      * 通过订单id 修改订单状态

@@ -58,7 +58,14 @@
             LEFT JOIN mac_user u on o.u_id = u.u_id
     </select>
 
-    <select id="findOrderByGoodsName" resultType="com.mac.order.entity.MacOrderDto">
-
+    <select id="findOrderByGoodsName" resultMap="MacOrderDtoMap">
+        select o.o_id,o.o_price,o.amount,m.m_name,m_img_url,c.c_name,t.t_name,s.s_name,u.u_name
+        from mac_order o
+        INNER JOIN mac_goods m on o.m_id = m.m_id
+        INNER JOIN mac_color c on m.c_id = c.c_id
+        INNER JOIN mac_type t on m.t_id = t.t_id
+        INNER JOIN mac_status s on o.s_id = s.s_id
+        INNER JOIN mac_user u on o.u_id = u.u_id
+        WHERE m.m_name LIKE  concat('%',#{goodName},'%')
     </select>
 </mapper>

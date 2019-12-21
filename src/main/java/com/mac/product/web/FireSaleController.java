@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
  */
 @Api(value = "热卖产品",tags = "热卖产品")
 @RestController
+@CrossOrigin
 public class FireSaleController {
 
     @Autowired
@@ -56,5 +57,7 @@ public class FireSaleController {
     public ResultVo fireBecomeGood(int goodId) {
         return macFireSaleService.fireBecomeGood(goodId);
     }
+
+
 
 }

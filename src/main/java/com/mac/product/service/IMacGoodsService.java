@@ -3,6 +3,7 @@ package com.mac.product.service;
 import com.mac.common.vo.ResultVo;
 import com.mac.dto.MacProductDto;
 import com.mac.product.entity.MacGoods;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  * @Author: sqs
@@ -13,7 +14,7 @@ import com.mac.product.entity.MacGoods;
 public interface IMacGoodsService {
 
     //后台添加商品
-    ResultVo addGoods(MacGoods macGoods);
+    ResultVo addGoods(MacGoods macGoods, MultipartFile multipartFile);
 
     ResultVo queryGoods();
 

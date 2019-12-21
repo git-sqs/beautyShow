@@ -13,10 +13,11 @@
         <result column="m_price" jdbcType="INTEGER" property="mPrice"/>
         <result column="m_img_url" jdbcType="VARCHAR" property="mImgUrl"/>
         <result column="m_desc" jdbcType="VARCHAR" property="mDesc"/>
-        <result column="m_kind" jdbcType="VARCHAR" property="mKind"/>
         <result column="c_id" jdbcType="INTEGER" property="cId"/>
         <result column="t_id" jdbcType="INTEGER" property="tId"/>
         <result column="f_id" jdbcType="INTEGER" property="fId"/>
+        <result column="v_id" jdbcType="INTEGER" property="vId"/>
+        <result column="k_id" jdbcType="INTEGER" property="kId"/>
     </resultMap>
     <resultMap id="MacGoodsDtoMap" type="com.mac.dto.MacGoodsDto">
         <result column="m_id" jdbcType="INTEGER" property="mId"/>
