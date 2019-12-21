@@ -1,6 +1,10 @@
 package com.mac.product.service.impl;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.mac.common.vo.ResultVo;
+import com.mac.dto.BackGoodsListDto;
+import com.mac.dto.GoodsQueryDto;
 import com.mac.dto.MacProductDto;
 import com.mac.oss.service.IOssUrlService;
 import com.mac.product.dao.MacGoodsMapper;
@@ -9,6 +13,8 @@ import com.mac.product.service.IMacGoodsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
+
+import java.util.List;
 
 /**
  * @Author: sqs
@@ -26,11 +32,10 @@ public class MacGoodsServiceImpl implements IMacGoodsService {
     private IOssUrlService ossUrlService;
     //后台添加商品
     @Override
-    public ResultVo addGoods(MacGoods macGoods, MultipartFile multipartFile) {
-        System.out.println(macGoods+multipartFile.getOriginalFilename());
-        String upload = ossUrlService.upload(multipartFile);
-        macGoods.setMImgUrl(upload);
+    public ResultVo addGoods(MacGoods macGoods, MultipartFile img) {
 
+        String upload = ossUrlService.upload(img);
+        macGoods.setMImgUrl(upload);
         if (goodsMapper.addGoods(macGoods) > 0) {
             return ResultVo.Ok();
         } else {
@@ -58,6 +63,36 @@ public class MacGoodsServiceImpl implements IMacGoodsService {
     @Override
     public ResultVo findGoodsByKeyWord(String keyWord) {
         return ResultVo.Ok(goodsMapper.findGoodsByKeyWord(keyWord));
+    }
+
+    @Override
+    public ResultVo backGoodsList(GoodsQueryDto goodsQueryDto) {
+        PageHelper.startPage(goodsQueryDto.getPage(),goodsQueryDto.getLimit());
+        List<BackGoodsListDto> backGoodsListDtos = goodsMapper.backGoodsList(goodsQueryDto);
+        return ResultVo.Ok(new PageInfo<>(backGoodsListDtos));
+    }
+
+    @Override
+    public ResultVo deleteGood(int id) {
+        if(goodsMapper.deleteGood(id)>0) {
+            return ResultVo.Ok();
+        } else {
+            return ResultVo.fail();
+        }
+
+    }
+
+    @Override
+    public ResultVo updateGood(MacGoods macGoods, MultipartFile img) {
+        if(img!=null){
+            macGoods.setMImgUrl(ossUrlService.upload(img));
+        }
+        System.out.println(macGoods);
+        if (goodsMapper.updateGood(macGoods) > 0) {
+            return ResultVo.Ok();
+        } else {
+            return ResultVo.fail();
+        }
     }
 
 

@@ -1,8 +1,6 @@
 package com.mac.product.dao;
 
-import com.mac.dto.MacAllInformationDto;
-import com.mac.dto.MacGoodsDto;
-import com.mac.dto.MacProductDto;
+import com.mac.dto.*;
 
 import com.mac.product.entity.MacGoods;
 import org.springframework.stereotype.Repository;
@@ -22,4 +20,10 @@ public interface MacGoodsMapper {
    List<MacGoodsDto> findByKind(int kid);
 
     List<MacGoodsDto> findGoodsByKeyWord(String keyWord);
+
+    List<BackGoodsListDto> backGoodsList(GoodsQueryDto goodsQueryDto);
+
+    int deleteGood(int id);
+
+    int updateGood(MacGoods macGoods);
 }

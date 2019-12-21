@@ -20,5 +20,11 @@ spring:
 mybatis:
   mapper-locations: classpath*:/mapper/*.xml
 
+pagehelper:
+  pagehelper.helperDialect: mysql
+  pagehelper.reasonable: true
+  pagehelper.supportMethodsArguments: true
+  pagehelper.params: count=countSql
+
 
 

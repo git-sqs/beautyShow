@@ -1,6 +1,7 @@
 package com.mac.product.web;
 
 import com.mac.common.vo.ResultVo;
+import com.mac.dto.GoodsQueryDto;
 import com.mac.product.entity.MacGoods;
 import com.mac.product.service.IMacGoodsService;
 import io.swagger.annotations.Api;
@@ -48,9 +49,29 @@ public class MacGoodsController {
 
     @ApiOperation(value ="后台管理添加商品",notes = "查询指定标签商品")
     @PostMapping("/api/mac/background/product/addGoods.do")
-    public ResultVo addGoods(MacGoods macGoods, MultipartFile multipartFile) {
-        return macGoodsService.addGoods(macGoods,multipartFile);
+    public ResultVo addGoods(MacGoods macGoods, MultipartFile img) {
+        return macGoodsService.addGoods(macGoods,img);
     }
+
+    @ApiOperation(value ="后台商品列表",notes = "后台商品列表")
+    @GetMapping("/api/mac/background/product/backGoodsList.do")
+    public ResultVo backGoodsList(GoodsQueryDto goodsQueryDto) {
+        return macGoodsService.backGoodsList(goodsQueryDto);
+    }
+
+    @ApiOperation(value ="后台管理修改商品",notes = "后台管理修改商品")
+    @PostMapping("/api/mac/background/product/updateGoods.do")
+    public ResultVo updateGood(MacGoods macGoods, MultipartFile img) {
+        return macGoodsService.updateGood(macGoods,img);
+    }
+
+    @ApiOperation(value ="后台商品删除",notes = "后台商品删除")
+    @GetMapping("/api/mac/background/product/deleteGood.do")
+    public ResultVo deleteGood(int id) {
+        return macGoodsService.deleteGood(id);
+    }
+
+
 
 
 }

@@ -1,6 +1,7 @@
 package com.mac.product.service;
 
 import com.mac.common.vo.ResultVo;
+import com.mac.dto.GoodsQueryDto;
 import com.mac.dto.MacProductDto;
 import com.mac.product.entity.MacGoods;
 import org.springframework.web.multipart.MultipartFile;
@@ -14,7 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 public interface IMacGoodsService {
 
     //后台添加商品
-    ResultVo addGoods(MacGoods macGoods, MultipartFile multipartFile);
+    ResultVo addGoods(MacGoods macGoods, MultipartFile img);
 
     ResultVo queryGoods();
 
@@ -25,4 +26,10 @@ public interface IMacGoodsService {
     ResultVo findByGoodsId(int id);
 
     ResultVo findGoodsByKeyWord(String keyWord);
+
+    ResultVo backGoodsList(GoodsQueryDto goodsQueryDto);
+
+    ResultVo deleteGood(int id);
+
+    ResultVo updateGood(MacGoods macGoods, MultipartFile img);
 }

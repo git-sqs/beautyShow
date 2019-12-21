@@ -40,6 +40,25 @@
         <result column="fire_name" jdbcType="VARCHAR" property="fireName"/>
     </resultMap>
 
+    <resultMap id="backGoodsListMap" type="com.mac.dto.BackGoodsListDto">
+        <result column="m_id" jdbcType="INTEGER" property="mId"/>
+        <result column="m_name" jdbcType="VARCHAR" property="mName"/>
+        <result column="m_weight" jdbcType="INTEGER" property="mWeight"/>
+        <result column="m_price" jdbcType="INTEGER" property="mPrice"/>
+        <result column="m_img_url" jdbcType="VARCHAR" property="mImgUrl"/>
+        <result column="m_desc" jdbcType="VARCHAR" property="mDesc"/>
+        <result column="c_id" jdbcType="INTEGER" property="cId"/>
+        <result column="c_name" jdbcType="VARCHAR" property="cName"/>
+        <result column="t_id" jdbcType="INTEGER" property="tId"/>
+        <result column="t_name" jdbcType="VARCHAR" property="tName"/>
+        <result column="f_id" jdbcType="INTEGER" property="fId"/>
+        <result column="v_id" jdbcType="INTEGER" property="vId"/>
+        <result column="v_url" jdbcType="INTEGER" property="vUrl"/>
+        <result column="v_img_url" jdbcType="INTEGER" property="vImgUrl"/>
+        <result column="k_id" jdbcType="INTEGER" property="kId"/>
+        <result column="sname" jdbcType="INTEGER" property="kName"/>
+    </resultMap>
+
     <insert id="addGoods">
     insert into mac_goods (m_name,m_weight,m_price,m_img_url,m_desc,c_id,t_id,f_id,v_id,k_id)
     values (#{mName,jdbcType=VARCHAR}, #{mWeight,jdbcType=INTEGER},
@@ -48,7 +67,7 @@
      </insert>
     <!--  查询指定商品信息-->
     <select id="findByGoodsId" resultMap="MacAllInformationMap">
-    SELECT m.m_id,m.m_name,m.m_weight,m.m_img_url,m.m_desc,m.k_id,m.c_id,m.t_id,c.c_name,t.t_name
+    SELECT m.m_id,m.m_name,m.m_weight,m.m_price,m.m_img_url,m.m_desc,m.k_id,m.c_id,m.t_id,c.c_name,t.t_name
         from mac_goods m
         LEFT JOIN mac_color c ON m.c_id = c.c_id
         LEFT JOIN mac_type t ON m.t_id = t.t_id
@@ -66,7 +85,7 @@
     <!--  关键字搜索商品-->
     <select id="findGoodsByKeyWord" resultMap="MacGoodsDtoMap">
         <bind name="myKeyName" value="'%'+keyName+'%'" />
-         SELECT m.m_id,m.m_name,c.c_name,t.t_name,m.m_price,m.m_img_url
+         SELECT m.m_id,m.m_name,m.m_price,c.c_name,t.t_name,m.m_price,m.m_img_url
         from mac_goods m LEFT JOIN mac_color c ON m.c_id = c.c_id
         LEFT JOIN mac_type t ON m.t_id = t.t_id
         <where>
@@ -76,5 +95,56 @@
         </where>
 
 </select>
+
+    <select id="backGoodsList" resultMap="backGoodsListMap">
+    SELECT m.m_id,m.m_name,m.m_weight,m.m_price,m.m_img_url,m.m_desc,m.c_id,m.t_id,m.v_id,m.f_id,m.k_id,c.c_name,t.t_name,v.v_url,v.v_img_url,k.sname
+        from mac_goods m
+        LEFT JOIN mac_color c ON m.c_id = c.c_id
+        LEFT JOIN mac_type t ON m.t_id = t.t_id
+        LEFT JOIN mac_video v ON m.v_id = v.v_id
+        LEFT JOIN total_sort k ON m.k_id = k.id
+        order by id
+    </select>
+
+    <delete id="deleteGood">
+        delete from mac_goods where m_id==#{id}
+    </delete>
+
+    <update id="updateGood" parameterType="com.mac.product.entity.MacGoods">
+        update mac_goods
+        <set>
+        <if test="mName != null">
+            m_name=#{mName},
+        </if>
+        <if test="mWeight != null">
+            m_weight=#{mWeight},
+        </if>
+        <if test=" mPrice != null">
+            m_price=#{mPrice},
+        </if>
+        <if test=" mImgUrl != null">
+            m_img_url=#{mImgUrl},
+        </if>
+        <if test="mDesc != null">
+            m_desc=#{mDesc},
+        </if>
+        <if test="cId != null">
+            c_id=#{cId},
+        </if>
+        <if test="tId != null">
+            t_id=#{tId},
+        </if>
+        <if test="fId != null">
+            f_id=#{fId},
+        </if>
+        <if test=" vId != null">
+            v_id=#{vId},
+        </if>
+        <if test="kId != null">
+            k_id=#{kId},
+        </if>
+        </set>
+         where m_id=#{mId}
+    </update>
 
 </mapper>
