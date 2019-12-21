@@ -16,7 +16,7 @@ public class MacVideo {
 
     private String vDesc;
 
-    private String vUrl;
+    private String vUrl = "";
 
-    private String vImgUrl;
+    private String vImgUrl = "";
 }

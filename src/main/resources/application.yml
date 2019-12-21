@@ -6,6 +6,10 @@ spring:
     username: root
     password: yuxinyue
     type: com.alibaba.druid.pool.DruidDataSource
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 1000MB
 
   thymeleaf:
     cache: false
@@ -19,6 +23,3 @@ spring:
 # mybatis配置
 mybatis:
   mapper-locations: classpath*:/mapper/*.xml
-
-
-

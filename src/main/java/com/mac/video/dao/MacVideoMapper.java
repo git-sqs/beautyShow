@@ -17,5 +17,7 @@ public interface MacVideoMapper {
     int insert(MacVideo macVideo);
     List<MacVideo> selectAll();
     MacVideo queryVideoById(int vid);
-    GoodsVideoDto queryGoodsVideoById(int vid);
+    List<GoodsVideoDto> queryGoodsVideoById(int vid);
+    int delVideoById(Integer vid);
+    int updateVideoById(MacVideo macVideo);
 }

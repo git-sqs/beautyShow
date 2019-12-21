@@ -12,6 +12,7 @@ public class BeautyshowApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(BeautyshowApplication.class, args);
+        System.err.println("！！！美妆项目启动成功！！！");
     }
 
 }
