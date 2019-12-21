@@ -2,12 +2,14 @@ package com.mac.video.service.impl;
 
 import com.mac.common.vo.ResultVo;
 import com.mac.dto.GoodsVideoDto;
+import com.mac.oss.service.IOssUrlService;
 import com.mac.video.dao.MacVideoMapper;
 import com.mac.video.entity.MacVideo;
 import com.mac.video.service.MacVideoService;
 import io.swagger.annotations.ApiImplicitParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -22,8 +24,17 @@ public class MacVideoServiceImpl implements MacVideoService {
 
     @Autowired
     private MacVideoMapper macVideoMapper;
+
+    @Autowired
+    private IOssUrlService iOssUrlService;
     @Override
-    public ResultVo insert(MacVideo macVideo) {
+    public ResultVo insert(MacVideo macVideo, MultipartFile multipartFile1, MultipartFile multipartFile2) {
+
+        String vImgUrl = iOssUrlService.upload(multipartFile1);
+        String vUrl = iOssUrlService.upload(multipartFile2);
+
+        macVideo.setVImgUrl(vImgUrl);
+        macVideo.setVUrl(vUrl);
         int c = macVideoMapper.insert(macVideo);
 
         if (c > 0) {
@@ -56,12 +67,30 @@ public class MacVideoServiceImpl implements MacVideoService {
 
     @Override
     public ResultVo queryGoodsVideoById(int vid) {
-        GoodsVideoDto videoDto = macVideoMapper.queryGoodsVideoById(vid);
+        List<GoodsVideoDto> videoDto = macVideoMapper.queryGoodsVideoById(vid);
 
         System.out.println("我是service--------------"+videoDto);
 
         if (null != videoDto) {
             return ResultVo.Ok(videoDto);
+        } else {
+            return ResultVo.fail();
+        }
+    }
+
+    @Override
+    public ResultVo delVideoById(Integer vid) {
+        if (macVideoMapper.delVideoById(vid) > 0) {
+            return ResultVo.Ok();
+        } else {
+            return ResultVo.fail();
+        }
+    }
+
+    @Override
+    public ResultVo updateVideoById(MacVideo macVideo) {
+        if (macVideoMapper.updateVideoById(macVideo) > 0) {
+            return ResultVo.Ok();
         } else {
             return ResultVo.fail();
         }

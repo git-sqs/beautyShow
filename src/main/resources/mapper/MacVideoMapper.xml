@@ -30,6 +30,29 @@
       #{vUrl,jdbcType=VARCHAR}, #{vImgUrl,jdbcType=VARCHAR})
   </insert>
 
+  <update id="updateVideoById">
+    update mac_video
+    <set>
+      <if test="vTitle != null">
+        v_title = #{vTitle}
+      </if>
+      <if test="vDesc != null">
+        v_desc = #{vDesc}
+      </if>
+      <if test="vDesc != null">
+        v_url = #{vUrl}
+      </if>
+      <if test="vDesc != null">
+        v_img_url = #{vImgUrl}
+      </if>
+    </set>
+    where v_id = #{vId}
+  </update>
+
+  <delete id="delVideoById">
+    delete from mac_video where v_id = #{vid}
+  </delete>
+
   <select id="selectAll" resultMap="BaseResultMap">
     select v_id,v_title,v_desc,v_url,v_img_url from mac_video
   </select>
@@ -46,4 +69,5 @@
     LEFT JOIN mac_color AS c ON c.c_id = g.c_id
     where v.v_id = #{vid}
   </select>
+
 </mapper>
