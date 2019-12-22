@@ -23,13 +23,14 @@ public class OrderController {
 
     /**
      *添加订单
-     * @param record 订单的详细信息
+     * @param id 订单的详细信息
      * @return 返回R
      */
     @ApiOperation(value = "添加订单(前台)",notes = "添加订单")
     @PostMapping("mac/order/insertOrder.do")
-    ResultVo insertOrder(MacOrder record){
-       return orderService.insert(record);
+    ResultVo insertOrder(Integer id){
+        System.out.println(0);
+       return orderService.insert(id);
     }
 
     /**

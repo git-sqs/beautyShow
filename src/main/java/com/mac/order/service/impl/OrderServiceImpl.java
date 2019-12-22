@@ -1,6 +1,7 @@
 package com.mac.order.service.impl;
 
 import com.mac.common.vo.ResultVo;
+import com.mac.dto.MacAllInformationDto;
 import com.mac.order.dao.MacOrderMapper;
 import com.mac.order.entity.MacOrder;
 import com.mac.order.service.OrderService;
@@ -21,16 +22,26 @@ public class OrderServiceImpl implements OrderService {
 
     /**
      * 添加订单G
-     * @param record 订单的详细信息
+     * @param gid 订单的详细信息
      * @return 返回R
      */
     @Override
-    public ResultVo insert(MacOrder record) {
+    public ResultVo insert(Integer gid) {
 
         /**
          * 将商品数量*商品价格 获取总价钱
          */
-        record.setOPrice(record.getAmount()*(macGoodsMapper.findByGoodsId(record.getMId()).getMPrice()));
+        MacAllInformationDto goods = macGoodsMapper.findByGoodsId(gid);
+        System.out.println(goods.toString());
+        MacOrder record = new MacOrder();
+        record.setOPrice(goods.getMPrice());
+        record.setAmount(1);
+        record.setCId(goods.getCId());
+        record.setMId(goods.getMId());
+        record.setTId(goods.getTId());
+        //********************************
+        record.setUId(1);
+        System.out.println(record.toString());
        if ( macOrderMapper.insert(record)>0){
            return ResultVo.Ok("添加成功");
        }else {

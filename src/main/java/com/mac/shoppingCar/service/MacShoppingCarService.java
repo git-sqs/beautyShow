@@ -11,10 +11,10 @@ public interface MacShoppingCarService {
 
     /**
      *添加购物车
-     * @param record 购物车的详细信息
+     * @param gid 购物车的详细信息
      * @return 返回int类型的数据
      */
-    ResultVo insertShoppingCar(MacShoppingCar record);
+    ResultVo insertShoppingCar(Integer[] gid);
 
     /**
      * 删除购物车

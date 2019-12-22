@@ -67,7 +67,7 @@ public class MacVideoServiceImpl implements MacVideoService {
 
     @Override
     public ResultVo queryGoodsVideoById(int vid) {
-        List<GoodsVideoDto> videoDto = macVideoMapper.queryGoodsVideoById(vid);
+        GoodsVideoDto videoDto = macVideoMapper.queryGoodsVideoById(vid);
 
         System.out.println("我是service--------------"+videoDto);
 

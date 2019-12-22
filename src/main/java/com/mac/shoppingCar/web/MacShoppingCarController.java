@@ -24,13 +24,13 @@ public class MacShoppingCarController {
 
     /**
      *添加购物车
-     * @param macShoppingCar 购物车的详细信息
+     * @param gid 购物车中的商品
      * @return 返回int类型的数据
      */
     @ApiOperation(value = "将商品添加到购物车中(前台)",notes ="将商品添加到购物车中" )
     @PostMapping("/mac/shoppingCar/insertShoppingCar.do")
-    ResultVo insertShoppingCar(MacShoppingCar macShoppingCar){
-        return macShoppingCarService.insertShoppingCar(macShoppingCar);
+    ResultVo insertShoppingCar(Integer []gid){
+        return macShoppingCarService.insertShoppingCar(gid);
     }
 
     /**

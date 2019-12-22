@@ -11,10 +11,10 @@ import com.mac.order.entity.MacOrder;
 public interface OrderService {
     /**
      *添加订单
-     * @param record 订单的详细信息
+     * @param gid 订单的详细信息
      * @return 返回R
      */
-    ResultVo insert(MacOrder record);
+    ResultVo insert(Integer gid);
 
     /**
      * 删除订单
