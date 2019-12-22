@@ -21,4 +21,8 @@
   <select id="querySortByUp" resultMap="BaseResultMap">
     select id,sname,up_level,grade from total_sort where up_level=#{sortId}
   </select>
+
+  <select id="backAllSort" resultType="com.mac.dto.TotalSortDto">
+select t1.id,t1.sname as sortName,t1.up_level as upLevel,t1.grade,t2.sname as upLevelName from total_sort t1 left join total_sort t2 on t1.up_level=t2.id;
+  </select>
 </mapper>

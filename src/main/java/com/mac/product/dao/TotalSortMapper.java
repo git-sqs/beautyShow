@@ -1,5 +1,6 @@
 package com.mac.product.dao;
 
+import com.mac.dto.TotalSortDto;
 import com.mac.product.entity.TotalSort;
 
 import java.util.List;
@@ -11,4 +12,6 @@ public interface TotalSortMapper {
     List<TotalSort> queryAllSort();
 
     List<TotalSort> querySortByUp(int sortId);
+
+    List<TotalSortDto> backAllSort();
 }

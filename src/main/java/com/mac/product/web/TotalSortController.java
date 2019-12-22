@@ -23,7 +23,7 @@ public class TotalSortController {
     @Autowired
     ITotalSortService totalSortService;
 
-    @ApiOperation(value ="查询所有的商品类型（前台,后台）",notes = "查询所有的商品类型")
+    @ApiOperation(value ="查询所有的商品类型前台",notes = "查询所有的商品类型")
     @GetMapping("/api/mac/product/totalSort/queryAllSort.do")
     public ResultVo queryAllSort() {
         return totalSortService.queryAllSort();
@@ -35,4 +35,10 @@ public class TotalSortController {
         return totalSortService.querySortByUp(sortId);
     }
 
+
+    @ApiOperation(value ="查询所有的商品类型后台",notes = "查询所有的商品类型后台")
+    @GetMapping("/api/mac/product/totalSort/backAllSort.do")
+    public ResultVo backAllSort() {
+        return totalSortService.backAllSort();
+    }
 }
