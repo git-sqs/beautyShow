@@ -45,7 +45,7 @@ public class MacGoodsServiceImpl implements IMacGoodsService {
 
     @Override
     public ResultVo queryGoods() {
-        return null;
+        return ResultVo.Ok(goodsMapper.queryGoods());
     }
 
     //指定类型的商品

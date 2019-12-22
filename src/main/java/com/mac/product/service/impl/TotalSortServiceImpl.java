@@ -28,4 +28,9 @@ public class TotalSortServiceImpl implements ITotalSortService {
     public ResultVo querySortByUp(int sortId) {
         return ResultVo.Ok(totalSortMapper.querySortByUp(sortId));
     }
+
+    @Override
+    public ResultVo backAllSort() {
+        return ResultVo.Ok(totalSortMapper.backAllSort());
+    }
 }

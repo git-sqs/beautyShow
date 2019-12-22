@@ -14,4 +14,6 @@ public interface ITotalSortService {
     ResultVo queryAllSort();
 
     ResultVo querySortByUp(int sortId);
+
+    ResultVo backAllSort();
 }

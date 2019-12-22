@@ -26,4 +26,6 @@ public interface MacGoodsMapper {
     int deleteGood(int id);
 
     int updateGood(MacGoods macGoods);
+
+    List<MacGoodsDto> queryGoods();
 }

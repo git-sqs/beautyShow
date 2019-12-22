@@ -27,6 +27,12 @@ public class MacGoodsController {
     @Autowired
     IMacGoodsService macGoodsService;
 
+    @ApiOperation(value ="查询所有商品",notes = "查询所有商品")
+    @GetMapping("/api/mac/product/macgoods/queryGoods.do")
+    public ResultVo queryGoods(){
+        return macGoodsService.queryGoods();
+    }
+
     @ApiOperation(value ="查询指定商品",notes = "查询指定商品")
     @GetMapping("/api/mac/product/macgoods/findByGoodsId.do")
     public ResultVo queryAllSort(int id) {
@@ -70,8 +76,5 @@ public class MacGoodsController {
     public ResultVo deleteGood(int id) {
         return macGoodsService.deleteGood(id);
     }
-
-
-
 
 }
