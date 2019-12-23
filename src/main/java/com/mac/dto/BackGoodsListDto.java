@@ -41,4 +41,5 @@ public class BackGoodsListDto {
     private String vUrl;
 
     private String vImgUrl;
+
 }

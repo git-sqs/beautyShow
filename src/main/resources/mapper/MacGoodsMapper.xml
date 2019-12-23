@@ -56,7 +56,7 @@
         <result column="v_url" jdbcType="INTEGER" property="vUrl"/>
         <result column="v_img_url" jdbcType="INTEGER" property="vImgUrl"/>
         <result column="k_id" jdbcType="INTEGER" property="kId"/>
-        <result column="sname" jdbcType="INTEGER" property="kName"/>
+        <result column="sname" jdbcType="VARCHAR" property="kName"/>
     </resultMap>
 
     <insert id="addGoods">
