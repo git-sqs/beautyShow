@@ -71,7 +71,7 @@
         from mac_goods m
         LEFT JOIN mac_color c ON m.c_id = c.c_id
         LEFT JOIN mac_type t ON m.t_id = t.t_id
-				WHERE m.m_id = #{id}
+		WHERE m.m_id = #{id}
     </select>
 
     <!--  点击不同标签显示不同种类商品-->
