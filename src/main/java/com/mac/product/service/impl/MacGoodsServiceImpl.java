@@ -69,7 +69,7 @@ public class MacGoodsServiceImpl implements IMacGoodsService {
     public ResultVo backGoodsList(GoodsQueryDto goodsQueryDto) {
         PageHelper.startPage(goodsQueryDto.getPage(),goodsQueryDto.getLimit());
         List<BackGoodsListDto> backGoodsListDtos = goodsMapper.backGoodsList(goodsQueryDto);
-        return ResultVo.Ok(new PageInfo<>(backGoodsListDtos));
+        return ResultVo.Ok(backGoodsListDtos);
     }
 
     @Override
