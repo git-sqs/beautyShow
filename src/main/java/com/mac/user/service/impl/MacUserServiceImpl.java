@@ -86,4 +86,14 @@ public class MacUserServiceImpl implements MacUserService {
             return ResultVo.fail();
         }
     }
+
+    @Override
+    public ResultVo deleteUserById(Integer uid) {
+        int  count = macUserMapper.deleteUserById(uid);
+        if (count > 0) {
+            return ResultVo.Ok();
+        } else {
+            return ResultVo.fail();
+        }
+    }
 }

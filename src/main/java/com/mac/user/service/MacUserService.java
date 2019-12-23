@@ -14,4 +14,6 @@ public interface MacUserService {
     ResultVo search(MemberQueryDto memberQueryDto);
 
     ResultVo all();
+
+    ResultVo deleteUserById(Integer uid);
 }

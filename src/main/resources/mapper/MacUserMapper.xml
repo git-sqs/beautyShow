@@ -13,6 +13,9 @@
     insert into mac_user (u_name, u_password)
     values (#{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR})
   </insert>
+  <delete id="deleteUserById">
+    delete from mac_user where u_id = #{uid}
+  </delete>
   <select id="selectByMsg" resultMap="BaseResultMap">
     select * from mac_user where u_name=#{msg}
   </select>

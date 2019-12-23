@@ -14,4 +14,6 @@ public interface MacUserMapper {
     int insert(MacUser record);
     MacUser selectByMsg(String msg);
     List<MacUser> all();
+
+    int deleteUserById(Integer uid);
 }

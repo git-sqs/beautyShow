@@ -19,25 +19,31 @@ public class MacUserController {
     private MacUserService macUserService;
 
     @ApiOperation(value = "校验会员的注册名称是否重复", notes = "校验会员的注册名称是否重复")
-    @GetMapping("/api/user/macUser/checkName.do")
+    @GetMapping("/mac/user/macUser/checkName.do")
     public ResultVo checkMsg(String msg) {
         return macUserService.queryByMsg(msg);
     }
 
     @ApiOperation(value = "实现会员的注册",notes = "实现会员的注册")
-    @PostMapping("/api/user/macUser/register.do")
+    @PostMapping("/mac/user/macUser/register.do")
     public ResultVo register(@RequestBody MacUser macUser){
         return macUserService.register(macUser);
     }
 
     @ApiOperation(value = "实现会员的登录",notes = "实现会员的登录")
-    @GetMapping("/api/user/macUser/login.do")
+    @GetMapping("/mac/user/macUser/login.do")
     public ResultVo login(String name,String password){
         return macUserService.login(name, password);
     }
 
+    @ApiOperation(value = "根据用户id删除用户",notes = "根据用户id删除用户")
+    @DeleteMapping("/mac/user/macUser/deleteUserById.do")
+    public ResultVo deleteUserById(Integer uid){
+        return macUserService.deleteUserById(uid);
+    }
+
     @ApiOperation(value = "用户列表",notes = "用户列表")
-    @GetMapping("/api/user/macUser/all.do")
+    @GetMapping("/mac/user/macUser/all.do")
     public ResultVo all(){
         return macUserService.all();
     }
