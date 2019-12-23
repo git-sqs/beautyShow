@@ -53,8 +53,8 @@
         <result column="t_name" jdbcType="VARCHAR" property="tName"/>
         <result column="f_id" jdbcType="INTEGER" property="fId"/>
         <result column="v_id" jdbcType="INTEGER" property="vId"/>
-        <result column="v_url" jdbcType="INTEGER" property="vUrl"/>
-        <result column="v_img_url" jdbcType="INTEGER" property="vImgUrl"/>
+        <result column="v_url" jdbcType="VARCHAR" property="vUrl"/>
+        <result column="v_img_url" jdbcType="VARCHAR" property="vImgUrl"/>
         <result column="k_id" jdbcType="INTEGER" property="kId"/>
         <result column="sname" jdbcType="VARCHAR" property="kName"/>
     </resultMap>
