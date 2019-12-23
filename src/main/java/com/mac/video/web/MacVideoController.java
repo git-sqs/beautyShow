@@ -23,8 +23,8 @@ public class MacVideoController {
 
     @ApiOperation(value = "商品视频的添加实现(后台)",notes = "商品视频的添加实现(后台)")
     @PostMapping("/mac/video/insertVideo.do")
-    public ResultVo insertVideo(MacVideo macVideo, MultipartFile multipartFile1 , MultipartFile multipartFile2) {
-        return macVideoService.insert(macVideo,multipartFile1,multipartFile2);
+    public ResultVo insertVideo(MacVideo macVideo, MultipartFile vImgUrl , MultipartFile vUrl) {
+        return macVideoService.insert(macVideo,vImgUrl,vUrl);
     }
 
     @ApiOperation(value = "根据视频id删除视频(后台)",notes = "根据视频id删除视频(后台)")

@@ -28,13 +28,13 @@ public class MacVideoServiceImpl implements MacVideoService {
     @Autowired
     private IOssUrlService iOssUrlService;
     @Override
-    public ResultVo insert(MacVideo macVideo, MultipartFile multipartFile1, MultipartFile multipartFile2) {
+    public ResultVo insert(MacVideo macVideo, MultipartFile vImgUrl, MultipartFile vUrl) {
 
-        String vImgUrl = iOssUrlService.upload(multipartFile1);
-        String vUrl = iOssUrlService.upload(multipartFile2);
+        String img = iOssUrlService.upload(vImgUrl);
+        String url = iOssUrlService.upload(vUrl);
 
-        macVideo.setVImgUrl(vImgUrl);
-        macVideo.setVUrl(vUrl);
+        macVideo.setVImgUrl(img);
+        macVideo.setVUrl(url);
         int c = macVideoMapper.insert(macVideo);
 
         if (c > 0) {

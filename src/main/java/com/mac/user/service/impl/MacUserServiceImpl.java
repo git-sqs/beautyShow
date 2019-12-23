@@ -12,6 +12,11 @@ import com.mac.utils.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
+/**
+ * @author Administrator
+ */
 @Service
 public class MacUserServiceImpl implements MacUserService {
 
@@ -70,5 +75,15 @@ public class MacUserServiceImpl implements MacUserService {
     @Override
     public ResultVo search(MemberQueryDto memberQueryDto) {
         return null;
+    }
+
+    @Override
+    public ResultVo all() {
+        List<MacUser> userList =  macUserMapper.all();
+        if (userList != null) {
+            return ResultVo.Ok(userList);
+        } else {
+            return ResultVo.fail();
+        }
     }
 }

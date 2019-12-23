@@ -7,10 +7,7 @@ import com.mac.product.service.IMacGoodsService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 /**
@@ -53,9 +50,9 @@ public class MacGoodsController {
     }
 
 
-    @ApiOperation(value ="后台管理添加商品",notes = "查询指定标签商品")
+    @ApiOperation(value ="后台管理添加商品",notes = "后台管理添加商品")
     @PostMapping("/api/mac/background/product/addGoods.do")
-    public ResultVo addGoods(MacGoods macGoods, MultipartFile img) {
+    public ResultVo addGoods(@RequestBody  MacGoods macGoods, MultipartFile img) {
         return macGoodsService.addGoods(macGoods,img);
     }
 

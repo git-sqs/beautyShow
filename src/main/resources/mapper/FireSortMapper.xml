@@ -43,7 +43,7 @@
     SELECT m.m_id,m.m_name,c.c_name,t.t_name,m.m_price,m.m_img_url,m.f_id,s.fire_name
         from mac_goods m LEFT JOIN mac_color c ON m.c_id = c.c_id
         LEFT JOIN mac_type t ON m.t_id = t.t_id
-        left join fire_sort s on m.f_id=s.id where m.f_id != 0
+        left join fire_sort s on m.f_id=s.id where m.f_id != 0 order by m.m_id
   </select>
     <delete id="delFireSaleSort">
     delete from fire_sort where id=#{id}

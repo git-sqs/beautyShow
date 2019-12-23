@@ -6,8 +6,12 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+/**
+ * @author Administrator
+ */
 @Repository
 public interface MacUserMapper {
     int insert(MacUser record);
     MacUser selectByMsg(String msg);
+    List<MacUser> all();
 }

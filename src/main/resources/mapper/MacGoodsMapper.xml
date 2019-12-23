@@ -109,7 +109,7 @@
         LEFT JOIN mac_type t ON m.t_id = t.t_id
         LEFT JOIN mac_video v ON m.v_id = v.v_id
         LEFT JOIN total_sort k ON m.k_id = k.id
-        order by id
+        order by m.m_id
     </select>
 
     <delete id="deleteGood">

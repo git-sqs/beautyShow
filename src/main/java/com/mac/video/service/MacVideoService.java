@@ -11,7 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
  * @date 2019/12/14 11:29
  */
 public interface MacVideoService {
-    ResultVo insert(MacVideo macVideo,MultipartFile multipartFile1, MultipartFile multipartFile2);
+    ResultVo insert(MacVideo macVideo,MultipartFile vImgUrl, MultipartFile vUrl);
 
     ResultVo selectAll();
 

@@ -6,12 +6,13 @@ import com.mac.user.service.MacUserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+/**
+ * @author Administrator
+ */
 @Api(value = "实现会员的相关操作", tags = "实现会员的相关操作")
+@CrossOrigin
 @RestController
 public class MacUserController {
     @Autowired
@@ -28,9 +29,16 @@ public class MacUserController {
     public ResultVo register(@RequestBody MacUser macUser){
         return macUserService.register(macUser);
     }
+
     @ApiOperation(value = "实现会员的登录",notes = "实现会员的登录")
     @GetMapping("/api/user/macUser/login.do")
     public ResultVo login(String name,String password){
         return macUserService.login(name, password);
+    }
+
+    @ApiOperation(value = "用户列表",notes = "用户列表")
+    @GetMapping("/api/user/macUser/all.do")
+    public ResultVo all(){
+        return macUserService.all();
     }
 }

@@ -7,9 +7,7 @@
     <result column="u_password" jdbcType="VARCHAR" property="password" />
   </resultMap>
 
-  <sql id="Base_Column_List">
-    id, username, password, source
-  </sql>
+
 
   <insert id="insert" parameterType="com.mac.user.entity.MacUser">
     insert into mac_user (u_name, u_password)
@@ -18,5 +16,8 @@
   <select id="selectByMsg" resultMap="BaseResultMap">
     select * from mac_user where u_name=#{msg}
   </select>
+    <select id="all" resultMap="BaseResultMap">
+      select * from mac_user
+    </select>
 
 </mapper>
